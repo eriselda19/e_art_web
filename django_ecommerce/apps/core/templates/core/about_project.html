@@ -1,0 +1,31 @@
+{% extends 'core/base.html'%}
+{% load static%}
+
+			{% block content %}
+			<!-- ABOUT-US-AREA START -->
+			<div class="about-us-area  pt-80 pb-80">
+				<div class="container">	
+					<div class="about-us bg-white">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="about-photo">
+									<img src="{% static 'banner/teamwork.jpg'%}" alt="" />
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="about-brief bg-dark-white">
+									<h4 class="title-1 title-border text-uppercase mb-30">Rreth Projektit</h4>
+									<p>E-Art Web eshte nje projekt i financuar nga Ministria e Kultures ne pergjigje te thirrjes për projekte kulturore për vitin 2021.
+										E-Art web është një platforme online, per te krijuar nje qasje inovative që pritet t’i shërbejë artizaneve ne te gjithe territorin e Shqiperise, në kushtet e situatës së krijuar nga COVID-19.</p>
+									<p>Në këtë epokë të digjitalizimit të bizneseve artizanët nga i gjithë vendi, kanë një hapësirë të dedikuar dhe një dritare të re për promovimin dhe tregtimin e produkteve të tyre.</p>
+									<p>Përdoruesit nga e gjithë bota mund të shohin veshje, tekstile, pajisje shtëpiake, qeramika, stoli dhe me një klikim mund të porosisin çdo gjë brenda dhe jashtë Shqipërisë.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ABOUT-US-AREA END -->
+			
+			<!-- FOOTER START -->
+		{% endblock %}

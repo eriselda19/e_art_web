@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %} {% block title %} {{category.title}} |{% endblock %}
+
+{% block content %}
+
+<div class="product-area pt-80 pb-80 product-style-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<!-- Widget-Search start -->
+				<aside class="widget widget-search mb-30">
+					<form method="get" action="{% url 'search' %}">
+						<input type="text" placeholder="Kerko" name="query" />
+	
+
+						<button type="submit">
+							<i class="zmdi zmdi-search"></i>
+						</button>
+					</form>
+				</aside>
+				<!-- Widget-search end -->
+				<!-- Widget-Categories start -->
+				<aside class="widget widget-categories  mb-30">
+					<div class="widget-title">
+						<h4>Kategorite</h4>
+					</div>
+					<div id="cat-treeview" class="widget-info product-cat boxscrol2">
+
+
+						<ul>
+							{% for category in menu_categories %}
+							<li><a href="{% url 'category' category.slug %}">{{category.title}}</a></li>
+							{% endfor %}
+
+						</ul>
+
+
+					</div>
+				</aside>
+				<!-- Widget-categories end -->
+				<!-- Shop-Filter start -->
+				<aside class="widget shop-filter mb-30">
+					<div class="widget-title">
+						<h4>Cmimi</h4>
+					</div>
+					<div class="widget-info">
+						<div class="price_filter">
+							<div class="price_slider_amount">
+								<input type="submit" value="You range :" />
+								<input type="text" id="amount" name="price" placeholder="Add Your Price" />
+							</div>
+							<div id="slider-range"></div>
+						</div>
+					</div>
+				</aside>
+				
+
+
+				<!-- Widget-banner end -->
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<!-- Shop-Content End -->
+				<div class="shop-content mt-tab-30 mt-xs-30">
+					<div class="product-option mb-30 clearfix">
+						<!-- Nav tabs -->
+						<ul class="shop-tab">
+							<li><a href="#grid-view" data-toggle="tab"><i class="zmdi zmdi-view-module"></i></a></li>
+							<li class="active"><a href="#list-view" data-toggle="tab"><i
+										class="zmdi zmdi-view-list"></i></a></li>
+						</ul>
+						<div class="showing text-right hidden-xs">
+							<p class="mb-0">Rezultatet</p>
+						</div>
+					</div>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="grid-view">
+
+
+							<!-- <div class="row"> -->
+						
+
+
+								{% for product in category.products.all %}
+								
+								{% include 'product/parts/list_item.html'%}
+
+							
+
+								{% endfor %}
+							<!-- </div> -->
+
+							
+						</div>
+					</div>
+					<!-- Pagination start -->
+					<div class="shop-pagination  text-center">
+						<div class="pagination">
+							<ul>
+								<li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
+								<li><a href="#">01</a></li>
+								<li class="active"><a href="#">02</a></li>
+								<li><a href="#">03</a></li>
+								<li><a href="#">04</a></li>
+								<li><a href="#">05</a></li>
+								<li><a href="#"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- Pagination end -->
+				</div>
+				<!-- Shop-Content End -->
+			</div>
+		</div>
+		</div>
+</div>
+		{% endblock %}

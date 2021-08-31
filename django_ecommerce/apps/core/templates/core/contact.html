@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+
+			{% block content %}
+
+			<!-- contact-us-AREA START -->
+			<div class="contact-us-area  pt-80 pb-80">
+				<div class="container">	
+					<div class="contact-us customer-login bg-white">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+								<div class="contact-details">
+									<h4 class="title-1 title-border text-uppercase mb-30">Kontakt</h4>
+									<ul>
+										<li>
+											<i class="zmdi zmdi-pin"></i>
+											<span>Rruga Aleksandër Moisiu 36,</span>
+											<span>Tiranë 1005</span>
+										</li>
+										<li>
+											<i class="zmdi zmdi-phone"></i>
+											<span>04 222 3077</span>
+						
+										</li>
+										<li>
+											<i class="zmdi zmdi-email"></i>
+											<span>info.doit@gmail.com</span>
+											
+										</li>
+									</ul>
+								</div>
+								{% if message_name %}
+
+								<center>
+									<br>
+									<br>
+								<h2>Faleminderit {{message_name}} per mesazhin tuaj</h2>
+								</center>
+								{% endif %}
+								<div class="send-message mt-60">
+									<form action="{% url 'contact' %}" method="POST">
+										{% csrf_token %}
+										<h4 class="title-1 title-border text-uppercase mb-30">send message</h4>
+							
+
+										<input type="text" name="message_name" placeholder="Emri" />
+										<input type="text" name="message_email" placeholder="Email" />
+										<textarea class="custom-textarea" name="message_text" placeholder="Teksti"></textarea>
+										<button class="button-one submit-button mt-20" data-text="submit message" type="submit">Dergo</button>
+									</form>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 mt-xs-30">
+								<div class="map-area">
+									<!-- <div id="googleMap" style="width:100%;height:600px;"></div> -->
+								<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11981.210819584658!2d19.8485827!3d41.3457738!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x25e79c8483537b61!2sMinistry%20of%20Culture!5e0!3m2!1sen!2s!4v1627405488588!5m2!1sen!2s" width="700" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endblock %}
+			<!-- ABOUT-US-AREA END -->
+			<!-- FOOTER START -->
+
+			{% include 'core/footer.html' %}
+		
+			<!-- FOOTER END -->
+			
+		</div>
+		<!-- WRAPPER END -->
+
+	

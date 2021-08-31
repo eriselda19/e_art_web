@@ -1,0 +1,35 @@
+	
+				<!-- Single-product start -->
+				<div class="single-product col-lg-12">
+					<div class="product-img">
+						<span class="pro-label new-label">new</span>
+						<a href="{% url 'product' product.category.slug  product.slug %}"><img src="{{product.get_thumbnail}}" alt="" /></a>
+						<div class="product-action clearfix">
+							<a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist"><i class="zmdi zmdi-favorite-outline"></i></a>
+							<a href="#" data-toggle="modal"  data-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
+							<a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+							<a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+						</div>
+					</div>
+					<div class="product-info clearfix">
+						<div class="fix">
+							<h4 class="post-title floatleft"><a href="#">{{product.title}}</a></h4>
+							<p class="floatright hidden-sm hidden-xs">{{product.category.title}}</p>
+						</div>
+						<div class="fix">
+							<span class="pro-price floatleft">$ {{product.price}}</span>
+							<span class="pro-rating floatright">
+								<a href="#"><i class="zmdi zmdi-star"></i></a>
+								<a href="#"><i class="zmdi zmdi-star"></i></a>
+								<a href="#"><i class="zmdi zmdi-star"></i></a>
+								<a href="#"><i class="zmdi zmdi-star-half"></i></a>
+								<a href="#"><i class="zmdi zmdi-star-half"></i></a>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!-- Single-product end -->
+
+				
+				
+

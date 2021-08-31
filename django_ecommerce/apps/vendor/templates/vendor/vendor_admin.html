@@ -1,0 +1,229 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+<!-- MY-ACCOUNT-AREA START -->
+<div class="my-account-area  pt-80 pb-80">
+	<div class="container">
+		<div class="my-account">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="panel-group" id="accordion">
+						<div class="panel">
+							<div class="my-account-menu">
+								<a data-toggle="collapse" data-parent="#accordion" href="#my-info">
+									Lista e produkteve
+								</a>
+							</div>
+							<div id="my-info" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<div class="billing-details shop-cart-table">
+										<div class="mt-20">
+											<a data-text="Shto produkt" class="button-one font-16px" href="{% url 'add_product' %}">Shto produkt</a><br>
+										 </div>
+                                       
+                                        {% if products %}
+
+										<table class="table is-fullwidth">
+											<thead>
+												<tr>
+													<th><strong>Produkti</strong></th>
+																								
+													<th><strong>Cmimi</strong></th>
+																							
+													<th><strong>Veprime</strong></th>
+																									</tr>
+											</thead>
+											<tbody>
+
+                                                {% for product in products %}
+
+                                                <tr>
+
+                                                    <td><a href="{% url 'product' product.category.slug product.slug %}">{{product.title}}</td></a>
+                                                    <td>${{product.price}}</td>
+                                
+                                                  <td> <a href="{% url 'edit_product' product.id %}"> <i class="zmdi zmdi-settings" style="padding-left: 20px;"></i> </a>
+                                                </td> 
+                                
+                                                </tr>
+                                    
+                                                {% endfor %}
+
+
+											</tbody>
+										</table>
+                                        {% else %}
+                                        <p>Ju nuk keni bashkangjitur akoma produkte</p>
+
+                                        {% endif %}
+				
+									</div>
+								</div>
+							</div>
+						</div>
+					
+						<div class="panel">
+							<div class="my-account-menu">
+								<a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#my-order">
+									Porosite
+								</a>
+							</div>
+							<div id="my-order" class="panel-collapse collapse">
+								<div class="panel-body">
+									<div class="our-order payment-details shop-cart-table">
+										<table>
+											<thead>
+												{% if orders %}
+
+												{% for order in orders %}
+												<tr>
+													<th><strong>Numri i porosise</strong></th>
+													<th class="text-right"><strong>#{{order.id}}</strong></th>
+
+												</tr>
+											</thead>
+											<tbody>
+
+												<tr>
+													<td>Emri i porositesit</td>
+													<td class="text-right">{{order.first_name}} </td>
+												</tr>
+
+												
+
+												{% for item in order.items.all%}
+
+												{% if item.vendor == request.user.vendor%}
+												<tr>
+													<td>Produkti</td>
+													<td class="text-right">{{item.product.title}}</td>
+												</tr>
+
+												<tr>
+													<td>Cmimi</td>
+													<td class="text-right">${{item.product.price}}</th>
+												</tr>
+												<tr>
+													<td>Sasia</td>
+													<td class="text-right">{{item.quantity}}</th>
+												</tr>
+												<tr>
+													<td>Paguar</td>
+													<td class="text-right">{{item.vendor_paid|yesno:"PO,JO"}}</th>
+												</tr>
+												<tr>
+													<td>Totali</td>
+													<td class="text-right">${{item.get_total_price}}</td>
+												</tr>
+
+												<tr>
+													<th><strong>Te dhenat e porosise</strong></th>
+													<th class="text-right"><strong></strong></th>
+												</tr>
+													<tr>
+														<td>Emri i porositesit</td>
+														<td class="text-right">{{order.first_name}}{{order.last_name}} </td>
+													</tr>
+													<tr>
+														<td>Adresa</td>
+														<td class="text-right">{{order.address}} </td>
+														
+													</tr>
+													<tr>
+														<td>Rruga</td>
+													<td class="text-right">{{order.place}}{{order.zipcode}} </td>
+												</tr>
+													<tr>
+														<td>Email</td>
+														<td class="text-right">{{order.email}} </td>
+													</tr>
+													<tr>
+														<td>Tel</td>
+														<td class="text-right">{{order.tel}} </td>
+													</tr>
+
+                                                    <tr>
+														<td></td>
+														<td class="text-right"></td>
+													</tr>
+												
+
+												{% endif %}
+												{% endfor %}
+												{% endfor %}
+												{% endif %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="panel-group" id="accordion-2">
+					
+							
+						<div class="panel">
+							<div class="my-account-menu my-account-menu-2">
+							
+								<a href="{% url 'vendors' %}">
+									Artizanet
+								</a>
+                                
+        
+							</div>
+						</div>
+
+						<div class="panel">
+							<div class="my-account-menu">
+								<a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#my-billing">
+									Llogaria ime
+								</a>
+							</div>
+							<div id="my-billing" class="panel-collapse collapse">
+								<div class="panel-body">
+									<div class="our-order payment-details shop-cart-table">
+										<!--  -->
+
+										<table>
+											<thead>
+												<tr>
+													<th><strong>Llogaria</strong></th>
+													<th class="text-right"><strong></strong></th>
+
+												</tr>
+											</thead>
+											<tbody>
+
+												<tr>
+													<td>Shuma e paguar: </td>
+													<td class="text-right">${{vendor.get_paid_amount}}</td>
+												</tr>
+												<tr>
+													<td>Balanca ime: </td>
+													<td class="text-right">${{vendor.get_balance}}</td>
+
+												</tr>
+
+
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- MY-ACCOUNT-CART-AREA END -->
+{% include 'core/footer.html' %}

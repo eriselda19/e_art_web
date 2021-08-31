@@ -1,0 +1,213 @@
+
+           {% extends 'core/base.html' %}
+
+           {% block title %}Artizanet | {% endblock %}
+           
+           {% block content %}
+           
+         
+            <!-- ELEMENTS-SLIDER START -->
+            <div class="elements-team  pt-80 pb-80">
+                <div class="container">
+                    <div class="row">
+                       <div class="col-sm-6 col-xs-12">
+                           
+                          
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="elements-preview">
+            <!-- TEAM-MEMBER-AREA END -->
+            <div class="team-member-area pb-80">
+                <div class="container">
+                    <!-- Section-title start -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center">
+                                <h2 class="title-border">Profilet e Artizaneve</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Section-title end -->  
+                    <div class="team-member">
+                        <div class="row">
+                            
+                            {% for vendor in vendors %}
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="single-member text-center bg-white mt-25">
+                                    {% if vendor.profile_image %}
+                                    <img src="{{vendor.profile_image.url}}" alt="" />
+                                    {% endif %}
+                                    <h3 class="text-uppercase mt-20">{{vendor.name}}</h3>
+                                    <h4 class="text-uppercase text-gray">{{vendor.field}}</h4>
+                                    <a href="{% url 'vendor' vendor.id %}"  <p class="text-gray">Punimet e mia <i class="zmdi zmdi-attachment-alt"></i> </p></a>
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                           
+                           
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TEAM-MEMBER-AREA END -->                                
+                                </div>
+                                <div class="tab-pane" id="elements-html">   
+<figure class="highlight">
+<pre>
+<code>
+    &lt;!-- TEAM-MEMBER-AREA END --&gt;
+    &lt;div class="team-member-area pb-80"&gt;
+    &lt;div class="container"&gt;
+    &lt;!-- Section-title start --&gt;
+    &lt;div class="row"&gt;
+    &lt;div class="col-lg-12"&gt;
+    &lt;div class="section-title text-center"&gt;
+    &lt;h2 class="title-border"&gt;Team Member&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Section-title end --&gt;
+    &lt;div class="team-member"&gt;
+    &lt;div class="row"&gt;
+    &lt;div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"&gt;
+    &lt;div class="single-member text-center bg-white mt-25"&gt;
+    &lt;img src="img/team/1.png" alt="" /&gt;
+    &lt;h3 class="text-uppercase mt-20"&gt;Nancy holland&lt;/h3&gt;
+    &lt;h4 class="text-uppercase text-gray"&gt;Chairman&lt;/h4&gt;
+    &lt;p class="text-gray"&gt;There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.&lt;/p&gt;
+    &lt;div class="team-social"&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-rss"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-pinterest"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"&gt;
+    &lt;div class="single-member text-center bg-white mt-25"&gt;
+    &lt;img src="img/team/2.png" alt="" /&gt;
+    &lt;h3 class="text-uppercase mt-20"&gt;Heather Estrada&lt;/h3&gt;
+    &lt;h4 class="text-uppercase text-gray"&gt;Chief Marketing&lt;/h4&gt;
+    &lt;p class="text-gray"&gt;There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.&lt;/p&gt;
+    &lt;div class="team-social"&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-rss"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-pinterest"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"&gt;
+    &lt;div class="single-member text-center bg-white mt-25"&gt;
+    &lt;img src="img/team/3.png" alt="" /&gt;
+    &lt;h3 class="text-uppercase mt-20"&gt;Nancy holland&lt;/h3&gt;
+    &lt;h4 class="text-uppercase text-gray"&gt;fashion desinger&lt;/h4&gt;
+    &lt;p class="text-gray"&gt;There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.&lt;/p&gt;
+    &lt;div class="team-social"&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-rss"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-pinterest"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"&gt;
+    &lt;div class="single-member text-center bg-white mt-25"&gt;
+    &lt;img src="img/team/1.png" alt="" /&gt;
+    &lt;h3 class="text-uppercase mt-20"&gt;Sara Knight&lt;/h3&gt;
+    &lt;h4 class="text-uppercase text-gray"&gt;Graphic Design&lt;/h4&gt;
+    &lt;p class="text-gray"&gt;There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.&lt;/p&gt;
+    &lt;div class="team-social"&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-rss"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="zmdi zmdi-pinterest"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- TEAM-MEMBER-AREA END --&gt;
+</code>
+</pre>
+</figure>                                                                   
+                                </div>
+                                <div class="tab-pane" id="elements-css">
+<figure class="highlight">
+<pre>
+<code>
+    .about-us { padding: 40px;}
+    .about-brief {
+    margin-left: -200px;
+    margin-top: 40px;
+    min-height: 350px;
+    padding: 40px 30px 30px 40px;
+    }
+    .single-member {
+    padding: 30px 15px;
+    transition: all 0.3s ease 0s;
+    }
+    .single-member:hover {
+    box-shadow: 1px 25px 54px rgba(0, 0, 0, 0.12);
+    }
+    .single-member img { border-radius: 50%;}
+    .single-member h3 {
+    color: #666;
+    font-family: bree serif;
+    font-size: 20px;
+    }
+    .single-member h4 {
+    color: #999;
+    font-size: 13px;
+    }
+    .team-social li {
+    display: inline-block;
+    margin: 0 1px;
+    }
+    .team-social ul li a {
+    color: #999;
+    display: block;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    }
+    .team-social ul li a:hover { color: #C8A165;}
+</code>
+</pre>
+</figure>                                
+                                </div>                           
+                            </div>
+                       </div>
+                   </div>           
+                </div>
+            </div>
+            <!-- ELEMENTS-SLIDER END -->
+
+            {% endblock %}
+          {% include 'core/footer.html' %}
