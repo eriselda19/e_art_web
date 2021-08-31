@@ -1,0 +1,399 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+
+<!-- SLIDER-AREA START  -->
+<section class="slider-area slider-style-2">
+	<div class="bend niceties preview-2">
+		<div id="ensign-nivoslider" class="slides">	
+			
+			{% for product in newest_products %}
+			
+
+			<img src="{{product.get_thumbnail}}" alt="" title="#slider-direction-1"  />
+
+			{% endfor %}
+		</div>
+		<!-- direction 1 -->
+		<div id="slider-direction-1" class="t-cn slider-direction">
+			<div class="slider-progress"></div>
+			<div class="slider-content t-lfl s-tb slider-1">
+				<div class="title-container s-tb-c title-compress">
+					<div class="layer-1">
+						<div class="wow fadeInUpBig" data-wow-duration="2s" data-wow-delay="0.5s">
+							<h3 class="slider-title3 text-uppercase mb-0" >Mireseerdhet</h3>
+						</div>
+						<div class="wow fadeInUpBig" data-wow-duration="2.5s" data-wow-delay="0.5s">
+							<h2 class="slider-title1 text-uppercase mb-0"><span class="hidden-xs">elegent </span>  furniture</h2>
+						</div>
+						<div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
+							<h2 class="slider-title2 text-uppercase" >gallery 2016</h2>
+						</div>
+						<div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
+							<a href="#" class="button-one style-2 text-uppercase mt-20" data-text="Shop now">Shop now</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		
+	</div>
+</section>
+<!-- SLIDER-AREA END -->
+			<div class="banner-area pt-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+							<!-- Single-banner start -->
+							<div class="single-banner banner-1 banner-4">
+								<a class="banner-thumb" href="#"><img src="img/banner/3.jpg" alt="" /></a>
+								<span class="pro-label new-label">new</span>
+								<span class="price">$50.00</span>
+								<div class="banner-brief">
+									<h2 class="banner-title"><a href="#">Product name</a></h2>
+									<p class="mb-0">Furniture</p>
+								</div>
+								<a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
+							</div>
+							<!-- Single-banner end -->					
+						</div>
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+							<!-- Single-banner start -->
+							<div class="single-banner banner-3">
+								<a class="banner-thumb" href="#"><img src="img/banner/4.jpg'" alt="" /></a>
+								<div class="banner-brief">
+									<h2 class="banner-title">
+										<a class="text-uppercase" href="#">design by <br />hurst <br />modern <br /><span>-2016</span></a>
+									</h2>
+								</div>
+							</div>
+							<!-- Single-banner end -->								
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- BANNER-AREA END -->
+			<!-- PRODUCT-AREA START -->
+			<div class="product-area pt-80 pb-30 product-style-2">
+				<div class="container">
+					<!-- Section-title start -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="section-title text-center">
+								<h2 class="title-border">Produktet e reja</h2>
+							</div>
+						</div>
+					</div>
+					<!-- Section-title end -->
+					
+					
+					<div class="row cus-row-30">
+						
+						<div class="product-slider arrow-left-right">
+							<!-- Single-product start -->
+							{% for product in newest_products %}
+							{% include 'product/parts/newest_products.html'%}
+							{% endfor %}
+							<!-- Single-product end -->
+							
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+
+			
+			<!-- PURCHASE-ONLINE-AREA START -->
+			
+	
+		
+			<div class="product-area pt-80 pb-30 product-style-2">
+				<div class="container">
+					<!-- Section-title start -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="section-title text-center">
+								<h2 class="title-border">Ikona</h2>
+							</div>
+						</div>
+					</div>
+			
+			<div class="row cus-row-30">
+							
+				<div class="product-slider arrow-left-right">
+					<!-- Single-product start -->
+					{% for product in ikona %}
+					{% include 'product/parts/newest_products.html'%}
+					{% endfor %}
+					<!-- Single-product end -->
+					
+					
+				</div>
+				
+			</div>
+				</div>
+				</div>
+				<div class="product-area pt-80 pb-30 product-style-2">
+					<div class="container">
+						<!-- Section-title start -->
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="section-title text-center">
+									<h2 class="title-border">Kostume popullore</h2>
+								</div>
+							</div>
+						</div>
+				
+				<div class="row cus-row-30">
+								
+					<div class="product-slider arrow-left-right">
+						<!-- Single-product start -->
+						{% for product in kostume %}
+						{% include 'product/parts/newest_products.html'%}
+						{% endfor %}
+						<!-- Single-product end -->
+						
+						
+					</div>
+					
+				</div>
+					</div>
+					</div>
+			
+
+					<div class="product-area pt-80 pb-30 product-style-2">
+						<div class="container">
+							<!-- Section-title start -->
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-title text-center">
+										<h2 class="title-border">Instrumente Muzikore</h2>
+									</div>
+								</div>
+							</div>
+					
+					<div class="row cus-row-30">
+									
+						<div class="product-slider arrow-left-right">
+							<!-- Single-product start -->
+							{% for product in instrumente %}
+							{% include 'product/parts/newest_products.html'%}
+							{% endfor %}
+							<!-- Single-product end -->
+							
+							
+						</div>
+						
+					</div>
+						</div>
+
+						
+						
+					<div class="product-area pt-80 pb-30 product-style-2">
+						<div class="container">
+							<!-- Section-title start -->
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-title text-center">
+										<h2 class="title-border">Objekte shtepie</h2>
+									</div>
+								</div>
+							</div>
+					
+					<div class="row cus-row-30">
+									
+						<div class="product-slider arrow-left-right">
+							<!-- Single-product start -->
+							{% for product in objekte %}
+							{% include 'product/parts/newest_products.html'%}
+							{% endfor %}
+							<!-- Single-product end -->
+							
+							
+						</div>
+						
+					</div>
+						</div>
+						</div>
+
+
+						<div class="product-area pt-80 pb-30 product-style-2">
+							<div class="container">
+								<!-- Section-title start -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<h2 class="title-border">Suvenire</h2>
+										</div>
+									</div>
+								</div>
+						
+						<div class="row cus-row-30">
+										
+							<div class="product-slider arrow-left-right">
+								<!-- Single-product start -->
+								{% for product in suvenire %}
+								{% include 'product/parts/newest_products.html'%}
+								{% endfor %}
+								<!-- Single-product end -->
+								
+								
+							</div>
+							
+						</div>
+							</div>
+							</div>
+
+							<div class="product-area pt-80 pb-30 product-style-2">
+								<div class="container">
+									<!-- Section-title start -->
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="section-title text-center">
+												<h2 class="title-border">Piktura</h2>
+											</div>
+										</div>
+									</div>
+							
+							<div class="row cus-row-30">
+											
+								<div class="product-slider arrow-left-right">
+									<!-- Single-product start -->
+									{% for product in piktura %}
+									{% include 'product/parts/newest_products.html'%}
+									{% endfor %}
+									<!-- Single-product end -->
+									
+									
+								</div>
+								
+							</div>
+								</div>
+								</div>
+
+							
+								
+								<div class="row cus-row-30">
+												
+									<div class="product-slider arrow-left-right">
+										<!-- Single-product start -->
+										{% for product in shporta %}
+										{% include 'product/parts/newest_products.html'%}
+										{% endfor %}
+										<!-- Single-product end -->
+										
+										
+									</div>
+									
+								</div>
+									</div>
+									</div>
+
+									<div class="product-area pt-80 pb-30 product-style-2">
+										<div class="container">
+											<!-- Section-title start -->
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="section-title text-center">
+														<h2 class="title-border">Bizhuteri</h2>
+													</div>
+												</div>
+											</div>
+									
+									<div class="row cus-row-30">
+													
+										<div class="product-slider arrow-left-right">
+											<!-- Single-product start -->
+											{% for product in bizhuteri %}
+											{% include 'product/parts/newest_products.html'%}
+											{% endfor %}
+											<!-- Single-product end -->
+											
+											
+										</div>
+										
+									</div>
+										</div>
+										</div>
+										<div class="product-area pt-80 pb-30 product-style-2">
+											<div class="container">
+												<!-- Section-title start -->
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="section-title text-center">
+															<h2 class="title-border">Punime</h2>
+														</div>
+													</div>
+												</div>
+										
+										<div class="row cus-row-30">
+														
+											<div class="product-slider arrow-left-right">
+												<!-- Single-product start -->
+												{% for product in punime %}
+												{% include 'product/parts/newest_products.html'%}
+												{% endfor %}
+												<!-- Single-product end -->
+												
+												
+											</div>
+											
+										</div>
+											</div>
+											</div>
+				
+			<!-- PURCHASE-ONLINE-AREA END -->
+			<!-- BLGO-AREA START -->
+			<div class="blog-area blog-2 pt-50">
+				<div class="container">
+					<!-- Section-title start -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="section-title text-center">
+								<h2 class="title-border">Artizanet</h2>
+							</div>
+						</div>
+					</div>
+					{% for vendor in vendors %}
+					<div class="row">
+					
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="single-blog mt-30">
+								{% if vendor.profile_image %}
+								<div class="blog-photo">
+									<a href="{% url 'vendor' vendor.id %}"><img src="{{vendor.profile_image.url}}" alt="" /></a>
+									{% endif %}
+									<div class="like-share text-center fix">
+										<a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
+										<a href="#"><i class="zmdi zmdi-comments"></i><span>59 Comments</span></a>
+										<a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
+									</div>
+								</div>
+								<div class="blog-info"> 
+									<div class="post-meta fix">
+										<div class="post-date floatleft"><span class="text-dark-red">30</span></div>
+										<div class="post-year floatleft">
+											<p class="text-uppercase text-dark-red mb-0">June, 2016</p>
+											<h4 class="post-title"><a href="#" tabindex="0">{{vendor.field}}</a></h4>
+										</div>
+									</div>
+									<p>{{vendor.description}}</p>
+									<a href="{% url 'vendor' vendor.id %}" class="button-2 text-dark-red">Lexo me shume...</a>
+								</div>
+							</div>
+						</div>
+						<!-- Single-blog end -->
+						
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<!-- BLGO-AREA END -->
+		
+					</div>
+			{% endblock %}

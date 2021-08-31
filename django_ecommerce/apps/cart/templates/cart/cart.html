@@ -1,0 +1,266 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Shporta | {% endblock %}
+
+{% block content %}
+
+
+<!-- SHOPPING-CART-AREA START -->
+<div class="shopping-cart-area  pt-80 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="shopping-cart">
+
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- shopping-cart start -->
+                        <div class="tab-pane active" id="shopping-cart">
+                            {% if cart %}
+                            <form action="#">
+                                <div class="shop-cart-table">
+                                    <div class="table-content table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">Produkti</th>
+                                                    <th class="product-price">Cmimi</th>
+                                                    <th class="product-quantity">Sasia</th>
+                                                    <th class="product-subtotal">Totali</th>
+                                                    <th class="product-remove">Fshij</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in cart %}
+                                                <tr>
+                                                    <td class="product-thumbnail  text-left">
+                                                        <!-- Single-product start -->
+                                                        <div class="single-product">
+                                                            <div class="product-img">
+                                                                <img src="{{item.product.get_thumbnail}}" />
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h4 class="post-title"><a class="text-light-black"
+                                                                        href="{%url 'product' item.product.category.slug item.product.slug%}">{{item.product.title}}</a>
+                                                                </h4>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- Single-product end -->
+                                                    </td>
+                                                    <td class="product-price">${{item.product.price}}</td>
+                                                    <td class="product-quantity">
+                                                        <div class="cart-plus-minus">
+                                                            <div class="dec qtybutton">
+                                                                <a href="?change_quantity={{item.id}}&quantity=-1">-</a>
+                                                            </div>
+                                                            <input type="text" value="{{item.quantity}}"
+                                                                name="qtybutton" class="cart-plus-minus-box">
+                                                            <div class="inc qtybutton">
+                                                                <a href="?change_quantity={{item.id}}&quantity=1">+</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-subtotal">${{item.total_price}}</td>
+                                                    <td class="product-remove">
+                                                        <a href="?remove_from_cart={{item.id}}"><i
+                                                                class="zmdi zmdi-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="customer-login payment-details mt-30">
+                                            <h4 class="title-1 title-border text-uppercase">Detajet e pageses</h4>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-left">Numri i produkteve</td>
+                                                        <td class="text-right">{{cart|length}}</td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td class="text-left">Order Total</td>
+                                                        <td class="text-right">${{cart.get_total_cost}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- shopping-cart end -->
+                        <br>
+                        <!-- check-out start -->
+                        <div class="tab-pane active" id="check-out">
+                            <form method="post" action="." id="payment-form">
+                                {% csrf_token %}
+
+                                {% if form.non_field_errors %}
+
+                                <div class="notification is-danger">
+
+                                    {{form.non_field_errors}}
+                                </div>
+
+                                {% endif %}
+
+                                {% if form.errors %}
+                                <div class="notification is-danger">
+
+                                    <ul>
+                                        {% for field in form %}
+
+                                        {% for error in field.errors %}
+                                        <li><strong>{{field.label}}:</strong>{{error}}</li>
+
+                                        {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+
+                                {% endif %}
+                                <div class="shop-cart-table check-out-wrap">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="billing-details pr-20">
+                                                <h4 class="title-1 title-border text-uppercase mb-30">Ploteso te dhenat
+                                                    e pageses
+                                                </h4>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="first_name"
+                                                            placeholder="Emri">
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="last_name"
+                                                            placeholder="Mbiemri">
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="form_email"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="phone" placeholder="Tel">
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="address"
+                                                            placeholder="Adresa">
+                                                    </div>
+
+                                                </div>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="zipcode"
+                                                            placeholder="Zip kodi">
+                                                    </div>
+
+                                                </div>
+                                                <div class="field">
+
+                                                    <div class="control">
+
+                                                        <input class="input" type="text" name="place"
+                                                            placeholder="Place">
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div id="card-element">
+
+
+
+                                </div>
+
+                                {% if messages %}
+
+                                {% for message in messages %}
+
+                                <div class="notification in-danger">{{ message }}</div>
+
+                                {% endfor %}
+
+                                {% endif %}
+
+                                <div class="field">
+                                    <div class="control">
+
+                                        <button class="button-one submit-button mt-15" data-text="Perfundo"
+                                            type="submit">Perfundo</button>
+                                    </div>
+                                </div>
+
+                        </div>
+                        {% else %}
+                        <p>Ju nuk keni produkte ne karte</p>
+                        {% endif %}
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}
+

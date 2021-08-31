@@ -1,0 +1,87 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %}Ndrysho produktin | {% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+		
+			<!-- MY-ACCOUNT-AREA START -->
+			<div class="my-account-area  pt-80 pb-80">
+				<div class="container">	
+					<div class="my-account">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div class="panel-group" id="accordion">
+									<div class="panel">
+										<div class="my-account-menu" >
+											<a  data-toggle="collapse" data-parent="#accordion" href="#my-info" >
+										Ndrysho detajet e produktit
+											</a>
+										</div>
+										<form method="POST" action=".">	
+											{% csrf_token %}
+										<div id="my-info" class="panel-collapse collapse in" >
+											<div class="panel-body">
+												<div class="billing-details shop-cart-table">
+													<div class="field">
+														<div class="control">
+															
+															{% render_field form.category class="custom-select mb-15" %}
+
+														</div>
+													</div>
+
+													<div class="field">
+														<div class="control">
+															
+													{% render_field form.image class="custom-select mb-15" %}
+														</div>
+													</div>
+													
+													
+													<div class="field">
+														<div class="control">
+															
+													{% render_field form.title class="input" %}
+														</div>
+													</div>
+													<div class="field">
+														<div class="control">
+														
+													{% render_field form.description class="custom-textarea" placeholder="Pershkrimi"%}
+														</div>
+													</div>
+													<div class="field">
+														<div class="control">
+															
+														Cmimi	{% render_field form.price class="input" %}
+														</div>
+													</div>
+													
+													<div class="field">
+														<div class="control">
+															<button type="submit" data-text="Ruaj" class="button-one submit-button mt-15">Ruaj</button>
+								
+														</div>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										</form>
+
+								
+							
+													
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- MY-ACCOUNT-CART-AREA END -->
+
+			{% endblock %}
+		{% include 'footer' %}

@@ -1,0 +1,378 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title> {% block title %} {% endblock %}Django Ecommerce </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+		<!-- Place favicon.ico in the root directory -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Google Font -->
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+
+		<!-- all css here -->
+		<!-- bootstrap v3.3.6 css -->
+		<link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}">
+		<!-- animate css -->
+		<link rel="stylesheet" href="{% static 'styles/animate.css' %}">
+		<!-- jquery-ui.min css -->
+		<link rel="stylesheet" href="{% static 'styles/jquery-ui.min.css' %}">
+		<!-- meanmenu css -->
+		<link rel="stylesheet" href="{% static 'styles/meanmenu.min.css'%}">
+		<!-- nivo-slider css -->
+		<link rel="stylesheet" href="{% static 'lib/css/nivo-slider.css' %}">
+		<link rel="stylesheet" href="{% static 'lib/css/preview.css' %}">
+		<!-- slick css -->
+		<link rel="stylesheet" href="{% static 'styles/slick.css' %}">
+		<!-- lightbox css -->
+		<link rel="stylesheet" href="{% static 'styles/css/lightbox.min.css'%}">
+		<!-- material-design-iconic-font css -->
+		<link rel="stylesheet" href="{% static 'styles/material-design-iconic-font.css'%}">
+		<!-- All common css of theme -->
+		<link rel="stylesheet" href="{% static 'styles/default.css' %}">
+		<link rel="stylesheet" href="{% static 'styles/style.css'%}">
+		
+        <!-- shortcode css -->
+        <link rel="stylesheet" href="{% static 'styles/shortcode.css'%}">
+		<!-- responsive css -->
+		<link rel="stylesheet" href="{% static 'styles/responsive.css'%}">
+		<!-- modernizr css -->
+
+		
+	</head>
+	<body>
+		<!-- WRAPPER START -->
+		<div class="wrapper bg-dark-white">
+
+			<!-- HEADER-AREA START -->
+			<header id="sticky-menu" class="header header-2">
+				<div class="header-area">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-4 col-sm-offset-4 col-xs-7">
+								<div class="logo text-center">
+									<a href="index.html"><img src="img/logo/logo.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-5">
+								<div class="mini-cart text-right">
+
+									<ul>
+	
+										{% if request.user.is_authenticated %}
+										<li>
+											<a class="cart-icon" href="{% url 'cart' %}"></a>
+												
+												
+											<li>	<a href="{% url 'vendor_admin' %}"><i class="zmdi zmdi-account-circle zmdi-hc-2x" style="padding-right: 13px;"></i></a>
+													</li>{% else %}
+										<li></li><a href="{% url 'login' %}">Hyr</a></li>
+										<li><a href="{% url 'become_vendor' %}">/ Regjistrohu</a></li>
+										{% endif %}
+											</a>
+
+										<li>
+
+											
+
+											<a class="cart-icon" href="{% url 'cart' %}">
+												<i class="zmdi zmdi-shopping-cart"></i>
+												<span>{% if cart %} ({{cart|length}}) {% endif %}</span>
+											</a>
+											<div class="mini-cart-brief text-left">
+												<div class="cart-items">
+													<p class="mb-0">Ju keni <span>{{cart|length}} produkte</span> ne shporten tuaj</p>
+												</div>
+												<div class="all-cart-product clearfix">
+													{% for item in cart %}
+													<div class="single-cart clearfix">
+														<div class="cart-photo">
+															<img src="{{item.product.get_thumbnail}}"/>
+														</div>
+														<div class="cart-info">
+															<h5><a href="{%url 'product' item.product.category.slug item.product.slug%}">{{item.product.title}}</a></h5>
+															<p class="mb-0">Cmimi : $ {{item.product.price}}</p>
+															
+															<p class="mb-0">Sasia : {{item.quantity}} </p>
+															<p class="mb-0">Totali : $ {{item.total_price}}</p>
+															<span class="cart-delete"><a href="?remove_from_cart={{item.id}}"><i class="zmdi zmdi-close"></i></a></span>
+														</div>
+													</div>
+													{% endfor %}
+												
+												</div>
+												<div class="cart-totals">
+													<h5 class="mb-0">Totali porosise <span class="floatright">${{cart.get_total_cost}}</span></h5>
+												</div>
+												
+												<div class="cart-bottom  clearfix">
+													
+													<a href="{% url 'cart' %}" class="button-one floatright text-uppercase" data-text="Shiko shporten">Shiko shporten</a>
+												</div>
+												<li><a href="{% url 'logout' %}" style="font-weight: bold; font-size:15px">Dil</a></li>
+											</div>
+											
+										</li>
+										
+									</ul>
+								
+								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- MAIN-MENU START -->
+				<div class="menu-toggle menu-toggle-2 hamburger hamburger--emphatic hidden-xs">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</div>
+				<div class="main-menu  hidden-xs">
+					<nav>
+						<ul>
+							<li><a href="{% url 'frontpage' %}">home</a>
+							
+							</li>
+							<li><a href="#">Kategorite</a>
+								<div class="mega-menu menu-scroll">
+									<div class="table">
+										<div class="table-cell">
+											<div class="half-width">
+												<ul>
+													<!-- <li class="menu-title">best brands</li> -->
+													{% for category in menu_categories %}
+													<li><a href="{% url 'category' category.slug %}">{{category.title}}</a></li>
+													{% endfor %}
+												</ul>
+											</div>
+											
+											<div class="full-width">
+												<div class="mega-menu-img">
+													<a href="single-product.html"><img src="img/megamenu/1.jpg" alt="" /></a>
+												</div>
+											</div>
+											<div class="pb-80"></div>
+										</div>
+									</div>
+								</div>
+							</li>
+                           
+                            </li>
+							
+						
+							<li><a href="#">Faqet</a>
+								<div class="sub-menu menu-scroll">
+									<ul>
+										
+										<li><a href="{% url 'vendors' %}">Artizanet</a></li>
+
+										{% if request.user.is_authenticated %}
+										<li><a href="{% url 'vendor_admin' %}">Llogaria ime</a></li>
+										{% else %}
+										<li><a href="{% url 'become_vendor' %}">Hyr / Regjistrohu</a></li>
+										{% endif %}
+										
+										
+									</ul>
+								</div>
+							</li>
+							<li><a href="{% url 'about_project' %}">Rreth Projektit</a></li>
+							<li><a href="{% url 'contact' %}">Kontakt</a></li>
+						</ul>
+					</nav>
+				</div>
+				<!-- MAIN-MENU END -->
+			</header>
+			<!-- HEADER-AREA END -->
+			<!-- Mobile-menu start -->
+			<div class="mobile-menu-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 hidden-lg hidden-md hidden-sm">
+							<div class="mobile-menu">
+								<nav id="dropdown">
+									<ul>
+										<li><a href="index.html">home</a>
+											<ul>
+												<li><a href="index.html">Home Version 1</a></li>
+												<li><a href="index-2.html">Home Version 2</a></li>
+											</ul>
+										</li>
+										<li><a href="shop.html">products</a></li>
+										<li><a href="shop-sidebar.html">accesories</a></li>
+										<li><a href="shop-list.html">lookbook</a></li>
+										<li><a href="blog.html">blog</a></li>
+										<li><a href="#">pages</a>
+											<ul>
+											
+												<li><a href="cart.html">Shopping Cart</a></li>
+												<li><a href="wishlist.html">Wishlist</a></li>
+												<li><a href="checkout.html">Checkout</a></li>
+												<li><a href="order.html">Order</a></li>
+												<li><a href="{% url 'vendors' %}">Artizanet</a></li>
+
+												{% if request.user.is_authenticated %}
+												<li><a href="{% url 'vendor_admin' %}">My Account</a></li>
+												{% else %}
+												<li><a href="{% url 'become_vendor' %}">login / Registration</a></li>
+												{% endif %}
+											
+											</ul>
+										</li>
+										<li><a href="about.html">about us</a></li>
+										<li><a href="contact.html">contact</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Mobile-menu end -->
+			
+			<!-- BANNER-AREA START -->
+
+			{%  block content %}
+		
+
+			{% endblock %}
+			<!-- FOOTER START -->
+			{% include 'core/footer.html' %}
+			<!-- FOOTER END -->
+			<!-- QUICKVIEW PRODUCT -->
+			<div id="quickview-wrapper">
+			   <!-- Modal -->
+			   <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body">
+								<div class="modal-product">
+									<div class="product-images">
+										<div class="main-image images">
+											<img alt="#" src="img/product/quickview-photo.jpg"/>
+										</div>
+									</div><!-- .product-images -->
+
+									<div class="product-info">
+										<h1>Aenean eu tristique</h1>
+										<div class="price-box-3">
+											<hr />
+											<div class="s-price-box">
+												<span class="new-price">$160.00</span>
+												<span class="old-price">$190.00</span>
+											</div>
+											<hr />
+										</div>
+										<a href="shop.html" class="see-all">See all features</a>
+										<div class="quick-add-to-cart">
+											<form method="post" class="cart">
+												<div class="numbers-row">
+													<input type="number" id="french-hens" value="3">
+												</div>
+												<button class="single_add_to_cart_button" type="submit">Add to cart</button>
+											</form>
+										</div>
+										<div class="quick-desc">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero.
+										</div>
+										<div class="social-sharing">
+											<div class="widget widget_socialsharing_widget">
+												<h3 class="widget-title-modal">Share this product</h3>
+												<ul class="social-icons">
+													<li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="zmdi zmdi-google-plus"></i></a></li>
+													<li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="zmdi zmdi-twitter"></i></a></li>
+													<li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="zmdi zmdi-facebook"></i></a></li>
+													<li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div><!-- .product-info -->
+								</div><!-- .modal-product -->
+							</div><!-- .modal-body -->
+						</div><!-- .modal-content -->
+					</div><!-- .modal-dialog -->
+			   </div>
+			   <!-- END Modal -->
+			</div>
+			<!-- END QUICKVIEW PRODUCT -->	
+			
+		</div>
+		<!-- WRAPPER END -->
+
+		<!-- all js here -->
+		<!-- jquery latest version -->
+		<script src="{% static 'js/vendor/jquery-1.12.0.min.js'%}"></script>
+		<!-- bootstrap js -->
+		<script src="{% static 'js/bootstrap.min.js'%}"></script>
+		<!-- jquery.meanmenu js -->
+		<script src="{% static 'js/jquery.meanmenu.js'%}"></script>
+		<!-- slick.min js -->
+		<script src="{% static 'js/slick.min.js'%}"></script>
+		<!-- jquery.treeview js -->
+		<script src="{% static 'js/jquery.treeview.js'%}"></script>
+		<!-- lightbox.min js -->
+		<script src="{% static 'js/lightbox.min.js'%}"></script>
+		<!-- jquery-ui js -->
+		<script src="{% static 'js/jquery-ui.min.js'%}"></script>
+		<!-- jquery.nivo.slider js -->
+		<script src="{% static 'lib/js/jquery.nivo.slider.js'%}"></script>
+		<script src="{% static 'lib/home.js'%}"></script>
+		<!-- jquery.nicescroll.min js -->
+		<script src="{% static 'js/jquery.nicescroll.min.js'}"></script>
+		<!-- countdon.min js -->
+		<script src="{% static 'js/countdon.min.js'%}"></script>
+		<!-- wow js -->
+		<script src="{% static 'js/wow.min.js'%}"></script>
+		<!-- plugins js -->
+		<script src="{% static 'js/plugins.js'%}"></script>
+		<!-- main js -->
+		<script src="{% static 'js/main.js'%}"></script>
+
+		<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('{{ stripe_pub_key }}');
+    var elements = stripe.elements();
+
+    var card = elements.create('card');
+
+    card.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                stripeTokenHandler(result.token);
+            }
+        });
+    });
+
+    function stripeTokenHandler(token) {
+        var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripe_token');
+        hiddenInput.setAttribute('value', token.id);
+        form.appendChild(hiddenInput);
+
+        form.submit();
+    }
+</script>
+
+
+	</body>
+</html>
