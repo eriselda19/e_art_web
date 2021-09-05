@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-q0web^(o_e76l60)u9_v7cf#w_*&pfa=-0z1@tkwq$vo)5)2=(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ddah.herokuapp.com']
 
 
 STRIPE_PUB_KEY='pk_test_51JF0YyFu7LP4zPGhlseHc8ymifUe3UmQxI7SIOv9q2YtEoAH4xDwhxWDhDhVNkNbQhUncnVfBjgTYWrVtIEzRd4U00ni72nftz'
@@ -109,8 +111,12 @@ WSGI_APPLICATION = 'django_ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':'ddi2cj00490kgv',
+        'HOST': 'ec2-34-249-247-7.eu-west-1.compute.amazonaws.com',
+        'USER': 'mvlkuqqbtatlus',
+        'PORT':'5432',
+        'PASSWORD':'902496153cea510e05ba82f641c9d5863e752f237614d13fcf964e606d1fe32a',
     }
 }
 
@@ -150,12 +156,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+#DEVELOPMENT
+#STATIC_URL='/static/'
 
-STATIC_URL='/static/'
-
-STATICFILES_DIRS=[
-     BASE_DIR / 'static'
-]
+#STATICFILES_DIRS=[
+ #    BASE_DIR / 'static']
+ 
+ #PRODUCTION
+ STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+ STATIC_URL="/static/"
+ django_heroku.settings(locals())
+ 
+ 
 
 
 # Default primary key field type
