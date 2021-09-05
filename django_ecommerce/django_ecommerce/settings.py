@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-q0web^(o_e76l60)u9_v7cf#w_*&pfa=-0z1@tkwq$vo)5)2=(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ddah.herokuapp.com']
+ALLOWED_HOSTS = ['e-art-web.herokuapp.com']
 
 
 STRIPE_PUB_KEY='pk_test_51JF0YyFu7LP4zPGhlseHc8ymifUe3UmQxI7SIOv9q2YtEoAH4xDwhxWDhDhVNkNbQhUncnVfBjgTYWrVtIEzRd4U00ni72nftz'
